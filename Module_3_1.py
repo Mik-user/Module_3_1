@@ -1,18 +1,25 @@
 calls = 0
-string = input('Введите строку (ну а вдруг подойдет):')
-list_to_search = list(["Не входит",'Входит'])
+string = str()
+list_to_search = list()
+tuple_ = tuple()
 def count_calls():
     global calls
-    calls = calls +1
+    calls += 1
 def string_info(string):
     tuple_ = tuple([len(string), string.upper(),string.lower()])
     count_calls()
     return tuple_
 def is_contains (string,list_to_search):
     count_calls()
-    return string in list_to_search
-for i in range(int(len(string)/3)):
-    print(string_info (string))
-    yes_or_not = is_contains(string,list_to_search)
-print(yes_or_not)
+    for i in list_to_search:
+        k = bool(string.lower() == i.lower())
+        if k == 'true':
+            break
+        else:
+            continue
+    return k
+print(string_info('Capybara'))
+print(string_info('Armageddon'))
+print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN'])) # Urban ~ urBAN
+print(is_contains('cycle', ['recycling', 'cyclic'])) # No matches
 print('calls =',calls)
